@@ -21,4 +21,14 @@ public class RabbitMQTest {
         rabbitTemplate.convertAndSend(RabbitMQConfig.ITEM_TOPIC_EXCHANGE, "item.delete", "商品删除，routing key 为item.delete");
     }
 
+    @Test
+    public void ttlQueueTest(){
+        rabbitTemplate.convertAndSend("my_ttl_queue","发送消息到过期队列my_ttl_queue,6秒内不消费则不能再被消费");
+    }
+
+    @Test
+    public void dlxTTLMessageTest(){
+        rabbitTemplate.convertAndSend("my_normal_exchange", "my_ttl_dlx", "测试过期消息；6秒过期后会被投递到死信交换机");
+    }
+
 }
