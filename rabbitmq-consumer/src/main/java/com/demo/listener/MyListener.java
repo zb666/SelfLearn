@@ -10,4 +10,5 @@ public class MyListener {
     public void myListener(String message){
         System.out.println("接收到的消息是: "+message);
     }
+
 }

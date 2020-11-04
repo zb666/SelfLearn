@@ -26,6 +26,8 @@ public class RabbitMQConfig {
     public Binding itemQueueExchange(
             @Qualifier("itemQueue") Queue queue,
             @Qualifier("itemTopicExchange")Exchange exchange){
+        //# 一个或者多个词
+        //* 匹配路由键的一个词
         return BindingBuilder.bind(queue).to(exchange).with("item.#").noargs();
     }
 
